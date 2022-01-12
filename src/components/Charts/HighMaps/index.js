@@ -34,7 +34,6 @@ const initOptions = {
   },
   series: [
     {
-        mapData: {},
       name: 'Dân số',
       joinBy: ['hc-key', 'key'],
     },

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { sortBy } from 'lodash';
 import CountrySelector from './components/CountrySelector';
-import { getCountries, getReportByCountry } from './apis';
+import { getCountries, getReportByCountry } from './components/apis';
 import Summary from './components/Summary';
 import Highlight from './components/Hightlight';
 import { Container, Typography } from '@material-ui/core';
@@ -15,6 +15,7 @@ const App = () => {
   const [countries, setCountries] = React.useState([]);
   const [selectedCountryId, setSelectedCountryId] = React.useState('');
   const [report, setReport] = React.useState([]);
+ 
 
   useEffect(() => {
     getCountries().then((res) => {
@@ -52,11 +53,11 @@ const App = () => {
           count: latestData.Confirmed,
           type: 'confirmed',
         },
-        {
-          title: 'Khỏi',
-          count: latestData.Recovered,
-          type: 'recovered',
-        },
+        // {
+        //   title: 'Khỏi',
+        //   count: latestData.Recovered,
+        //   type: 'recovered',
+        // },
         {
           title: 'Tử vong',
           count: latestData.Deaths,
@@ -79,7 +80,7 @@ const App = () => {
         value={selectedCountryId}
       />
       <Highlight summary={summary} />
-      <Summary countryId={selectedCountryId} report={report} />
+      <Summary countryId={selectedCountryId} report={report}  />
     </Container>
   );
 };
